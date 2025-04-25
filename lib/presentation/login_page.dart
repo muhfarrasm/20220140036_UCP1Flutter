@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ucp1/presentation/register_page.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:ucp1/presentation/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -10,15 +11,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     //return const Image(image: AssetImage('assets/background.png'));
@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
                 controller: emailController,
                 decoration: const InputDecoration(labelText: 'Email'),
                 validator: (value) {
-                  if (value == null || value.isEmpty){
+                  if (value == null || value.isEmpty) {
                     return 'Tolong masukkan email kamu';
                   }
                   return null;
@@ -46,11 +46,23 @@ class _LoginPageState extends State<LoginPage> {
                 controller: passwordController,
                 decoration: const InputDecoration(labelText: 'Password'),
                 validator: (value) {
-                  if (value == null || value.isEmpty){
+                  if (value == null || value.isEmpty) {
                     return 'Tolong masukkan password kamu';
                   }
                   return null;
                 },
+              ),
+
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomePage()),
+                    );
+                  }
+                },
+                child: Text('Login'),
               ),
             ],
           ),
