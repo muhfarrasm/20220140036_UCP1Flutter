@@ -13,20 +13,20 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nohpController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController konfirpasswordController = TextEditingController();
+  final TextEditingController konfirpasswordController =
+      TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  
 
   bool _isPasswordVisible = false;
   bool _isPasswordKonfirmVisible = false;
-
 
   @override
   void initState() {
     super.initState();
     _isPasswordVisible = false;
-    _isPasswordKonfirmVisible =  false;
+    _isPasswordKonfirmVisible = false;
   }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -54,13 +54,13 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: [
                   const Text(
                     'Nama Lengkap',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                   ),
 
                   TextFormField(
                     controller: emailController,
                     decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.email),
+                      prefixIcon: const Icon(Icons.person),
                       hintText: 'Nama Lengkap',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -77,6 +77,60 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const SizedBox(height: 16),
 
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Email',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                        ),
+
+                        const SizedBox(height: 8),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            hintText: 'Email',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(width: 16), // jarak antar kolom
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'No HP',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            hintText: 'No HP',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
               SizedBox(
                 width: double.infinity,
                 height: 60,
@@ -104,7 +158,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              
             ],
           ),
         ),
