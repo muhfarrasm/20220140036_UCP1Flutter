@@ -14,9 +14,14 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  
+
+  bool _isPasswordVisible = false;
+
   @override
   void initState() {
     super.initState();
+    _isPasswordVisible = false;
   }
 
   @override
@@ -82,8 +87,21 @@ class _LoginPageState extends State<LoginPage> {
 
                   TextFormField(
                     controller: passwordController,
+                    obscureText: !_isPasswordVisible,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.lock),
+                      suffix: IconButton(icon: Icon(
+                        _isPasswordVisible
+                          ? Icons.visibility
+                          : Icons.visibility,
+                      ),
+                      onPressed: (){
+                        setState(() {
+                          _isPasswordVisible = !_isPasswordVisible;
+                        });
+                      },
+                      ),
+
                       labelText: 'Password',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
