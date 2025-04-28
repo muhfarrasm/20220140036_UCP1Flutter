@@ -58,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
 
                   TextFormField(
-                    controller: emailController,
+                    controller: namalengkapController,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.person),
                       hintText: 'Nama Lengkap',
@@ -94,6 +94,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                         const SizedBox(height: 8),
                         TextFormField(
+                          controller: emailController,
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.email),
                             hintText: 'Email',
@@ -126,6 +127,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         const SizedBox(height: 8),
                         TextFormField(
+                          controller: nohpController,
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.call),
                             hintText: 'No HP',
@@ -164,6 +166,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
                         const SizedBox(height: 8),
                         TextFormField(
+                          controller: passwordController,
+                          obscureText: !_isPasswordVisible,
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.lock),
                             hintText: 'Password',
@@ -196,6 +200,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         const SizedBox(height: 8),
                         TextFormField(
+                          controller: konfirpasswordController,
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.lock),
                             hintText: 'Konfirmasi Password',
