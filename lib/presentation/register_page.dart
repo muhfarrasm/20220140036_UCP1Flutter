@@ -101,12 +101,17 @@ class _RegisterPageState extends State<RegisterPage> {
                               borderRadius: BorderRadius.circular(12),
                             ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Email Tidak Boleh Kosong';
+                            }
+                            return null;
+                          },
                         ),
                       ],
                     ),
                   ),
 
-                  
                   const SizedBox(width: 20), // jarak antar kolom
                   Expanded(
                     child: Column(
@@ -128,6 +133,12 @@ class _RegisterPageState extends State<RegisterPage> {
                               borderRadius: BorderRadius.circular(12),
                             ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'No HP Tidak Boleh Kosong';
+                            }
+                            return null;
+                          },
                         ),
                       ],
                     ),
@@ -160,6 +171,12 @@ class _RegisterPageState extends State<RegisterPage> {
                               borderRadius: BorderRadius.circular(12),
                             ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Password Tidak Boleh Kosong';
+                            }
+                            return null;
+                          },
                         ),
                       ],
                     ),
@@ -186,6 +203,12 @@ class _RegisterPageState extends State<RegisterPage> {
                               borderRadius: BorderRadius.circular(12),
                             ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Konfirmasi Password Tidak Boleh Kosong';
+                            }
+                            return null;
+                          },
                         ),
                       ],
                     ),
