@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
   Widget _menuCard(IconData icon, String text, BuildContext context) {
     return Expanded(
       child: Card(
+        color: Colors.deepOrange,
         elevation: 2,
         margin: const EdgeInsets.all(8),
         child: InkWell(
@@ -16,9 +17,10 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: Column(
               children: [
-                Icon(icon, size: 30, color: Colors.deepOrange),
+                Icon(icon, size: 30, color: Colors.white),
                 const SizedBox(height: 8),
-                Text(text, style: Theme.of(context).textTheme.titleMedium),
+                Text(text, style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),
+                ),
               ],
             ),
           ),
@@ -84,19 +86,20 @@ class HomePage extends StatelessWidget {
               ),
             ),
 
+            const SizedBox(height: 50),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 0),
               child: Column(
                 children: [
                   Row(
                   children: [
-                  _menuCard(Icons.people, "Data Piket", context),
-                  _menuCard(Icons.calendar_today, "Data Piket", context),
+                  _menuCard(Icons.calendar_today , "Data Piket", context),
+                  _menuCard(Icons.group, "Data Pelanggan", context),
                 ],
                 ),
                 Row(
                   children: [
-                  _menuCard(Icons.book, "Data Piket", context),
+                  _menuCard(Icons.inventory, "Barang Masuk", context),
                 ],
                 )
                 ]
