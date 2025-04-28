@@ -3,6 +3,32 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+Widget _menuCard(IconData icon, String text, BuildContext context) {
+    return Expanded(
+      child: Card(
+        elevation: 2,
+        margin: const EdgeInsets.all(8),
+        child: InkWell(
+          onTap: () {},
+          borderRadius: BorderRadius.circular(8),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Column(
+              children: [
+                Icon(icon, size: 30, color: Colors.deepOrange),
+                const SizedBox(height: 8),
+                Text(
+                  text,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+  
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -47,12 +73,26 @@ class HomePage extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.asset(
-                  'assets/images/promo.png',
+                  'assets/images/BK.jpg',
                   width: size.width,
                   fit: BoxFit.cover,
                 ),
 
               ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child : Column(
+                children: [
+                  Row(
+                    children: [
+                      _menuCard(Icons.chat, "Data Piket"),
+
+                    ],
+                    ),
+                ]
+              )
             ),
           ],
         ),
