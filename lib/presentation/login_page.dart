@@ -13,7 +13,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
+  final _formKey = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     //return const Image(image: AssetImage('assets/background.png'));
-    final _formKey = GlobalKey<FormState>();
+    
     return Scaffold(
       body: Form(
         key: _formKey,
@@ -128,15 +128,25 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 20),
 
-              TextButton(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Belum memiliki akun?'),
+                  TextButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => RegisterPage()),
                   );
                 },
-                child: Text('Belum memiliki akun? Silahkan Daftar disini'),
+                child: Text('Daftar disini!',
+                style: TextStyle(color: Colors.red),
+                ),
               ),
+
+                ],
+              )
+              
             ],
           ),
         ),
