@@ -32,50 +32,75 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image(image: const AssetImage("assets/images/hd.png"),
-              height: size.height * 0.1),
+              Image(
+                image: const AssetImage("assets/images/hd.png"),
+                height: size.height * 0.1,
+              ),
               const SizedBox(height: 20),
-              const Text('SELAMAT DATANG KEMBALI',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              const Text(
+                'SELAMAT DATANG KEMBALI',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 30),
-              TextFormField(
-                controller: emailController,
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.email),
-                  labelText: 'Email',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Email',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
+
+                  TextFormField(
+                    controller: emailController,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.email),
+                      labelText: 'Email',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Email Tidak Boleh Kosong';
+                      }
+                      return null;
+                    },
                   ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Email Tidak Boleh Kosong';
-                  }
-                  return null;
-                },
+                ],
               ),
               const SizedBox(height: 16),
 
-              TextFormField(
-                controller: passwordController,
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.lock),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Password',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                  const SizedBox(height: 8),
 
-                  labelText: 'Password',
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),
+                  TextFormField(
+                    controller: passwordController,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.lock),
+                      labelText: 'Password',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Password tidak boleh kosong';
+                      }
+                      return null;
+                    },
                   ),
-                  ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Password tidak boleh kosong';
-                  }
-                  return null;
-                },
+                ],
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 70),
 
-             SizedBox(
+              SizedBox(
                 width: double.infinity,
                 height: 60,
                 child: ElevatedButton(
@@ -89,7 +114,9 @@ class _LoginPageState extends State<LoginPage> {
                     if (_formKey.currentState!.validate()) {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const HomePage()),
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ),
                       );
                     }
                   },
@@ -108,7 +135,8 @@ class _LoginPageState extends State<LoginPage> {
                     MaterialPageRoute(builder: (context) => RegisterPage()),
                   );
                 },
-                child: Text('Belum memiliki akun? Silahkan Daftar disini')),
+                child: Text('Belum memiliki akun? Silahkan Daftar disini'),
+              ),
             ],
           ),
         ),
