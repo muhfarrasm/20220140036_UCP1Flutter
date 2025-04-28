@@ -174,7 +174,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               icon: Icon(
                                 _isPasswordVisible
                                     ? Icons.visibility
-                                    : Icons.visibility,
+                                    : Icons.visibility_off,
                               ),
                               onPressed: () {
                                 setState(() {
@@ -221,7 +221,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               icon: Icon(
                                 _isPasswordVisible
                                     ? Icons.visibility
-                                    : Icons.visibility,
+                                    : Icons.visibility_off,
                               ),
                               onPressed: () {
                                 setState(() {
