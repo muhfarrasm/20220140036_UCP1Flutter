@@ -75,22 +75,31 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 30),
 
-              ElevatedButton(
-                child: Text('Masuk'),
-                style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 235, 125, 15),
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+             SizedBox(
+                width: double.infinity,
+                height: 60,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepOrange,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const HomePage()),
+                      );
+                    }
+                  },
+                  child: const Text(
+                    'Masuk',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
                 ),
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
-                    );
-                  }
-                },
-                
               ),
+              const SizedBox(height: 20),
 
               TextButton(
                 onPressed: () {
