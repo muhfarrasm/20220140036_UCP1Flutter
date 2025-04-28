@@ -95,6 +95,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         const SizedBox(height: 8),
                         TextFormField(
                           decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.email),
                             hintText: 'Email',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -105,7 +106,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
 
-                  const SizedBox(width: 16), // jarak antar kolom
+                  
+                  const SizedBox(width: 20), // jarak antar kolom
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,6 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         const SizedBox(height: 8),
                         TextFormField(
                           decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.call),
                             hintText: 'No HP',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -132,6 +135,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ],
               ),
 
+              const SizedBox(height: 20),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -150,6 +154,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         const SizedBox(height: 8),
                         TextFormField(
                           decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.lock),
                             hintText: 'Password',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -175,6 +180,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         const SizedBox(height: 8),
                         TextFormField(
                           decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.lock),
                             hintText: 'Konfirmasi Password',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -186,6 +192,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ],
               ),
+              const SizedBox(height: 70),
               SizedBox(
                 width: double.infinity,
                 height: 60,
