@@ -21,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     //return const Image(image: AssetImage('assets/background.png'));
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
@@ -31,29 +32,55 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image(image: const AssetImage("assets/images/hd.png"),
+              height: size.height * 0.1),
+              const SizedBox(height: 20),
+              const Text('SELAMAT DATANG KEMBALI',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 30),
               TextFormField(
                 controller: emailController,
-                decoration: const InputDecoration(labelText: 'Email'),
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.email),
+                  labelText: 'Email',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Tolong masukkan email kamu';
+                    return 'Email Tidak Boleh Kosong';
                   }
                   return null;
                 },
               ),
+              const SizedBox(height: 16),
 
               TextFormField(
                 controller: passwordController,
-                decoration: const InputDecoration(labelText: 'Password'),
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.lock),
+
+                  labelText: 'Password',
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),
+                  ),
+                  ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Tolong masukkan password kamu';
+                    return 'Password tidak boleh kosong';
                   }
                   return null;
                 },
               ),
+              const SizedBox(height: 30),
 
               ElevatedButton(
+                child: Text('Masuk'),
+                style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 235, 125, 15),
+                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     Navigator.pushReplacement(
@@ -62,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                     );
                   }
                 },
-                child: Text('Login'),
+                
               ),
 
               TextButton(
