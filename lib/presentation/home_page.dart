@@ -10,7 +10,38 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.white,
        body: SingleChildScrollView(
         child: Column(
-          children: []))
+          children: [
+            Container(
+              color: Colors.deepOrange,
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+              child: Row(
+                children: [
+                  const CircleAvatar(
+                    radius: 30,
+                    backgroundImage: AssetImage('assets/images/foto profil.jpg'),
+                  ),
+                  const SizedBox(width: 16),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const[
+                      Text(
+                        'Selamat Datang',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    icon: const Icon(Icons.logout, color: Colors.white),
+                    onPressed:(){
+
+                    },
+                  )
+                ],
+              )
+            )
+          ]))
     );
   }
 }
