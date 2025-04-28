@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1/presentation/login_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-Widget _menuCard(IconData icon, String text, BuildContext context) {
+  Widget _menuCard(IconData icon, String text, BuildContext context) {
     return Expanded(
       child: Card(
         elevation: 2,
@@ -17,10 +18,7 @@ Widget _menuCard(IconData icon, String text, BuildContext context) {
               children: [
                 Icon(icon, size: 30, color: Colors.deepOrange),
                 const SizedBox(height: 8),
-                Text(
-                  text,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
+                Text(text, style: Theme.of(context).textTheme.titleMedium),
               ],
             ),
           ),
@@ -28,13 +26,13 @@ Widget _menuCard(IconData icon, String text, BuildContext context) {
       ),
     );
   }
-  
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
-       body: SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
@@ -44,24 +42,30 @@ Widget _menuCard(IconData icon, String text, BuildContext context) {
                 children: [
                   const CircleAvatar(
                     radius: 30,
-                    backgroundImage: AssetImage('assets/images/foto profil.jpg'),
+                    backgroundImage: AssetImage(
+                      'assets/images/foto profil.jpg',
+                    ),
                   ),
                   const SizedBox(width: 16),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const[
+                    children: const [
                       Text(
                         'Selamat Datang',
                         style: TextStyle(color: Colors.white, fontSize: 16),
-
                       ),
                     ],
                   ),
                   const Spacer(),
                   IconButton(
                     icon: const Icon(Icons.logout, color: Colors.white),
-                    onPressed:(){
-
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginPage(),
+                        ),
+                      );
                     },
                   ),
                 ],
@@ -77,26 +81,32 @@ Widget _menuCard(IconData icon, String text, BuildContext context) {
                   width: size.width,
                   fit: BoxFit.cover,
                 ),
-
               ),
             ),
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child : Column(
+              child: Column(
                 children: [
                   Row(
-                    children: [
-                      _menuCard(Icons.chat, "Data Piket"),
-
-                    ],
-                    ),
+                  children: [
+                  _menuCard(Icons.people, "Data Piket", context),
+                  _menuCard(Icons.calendar_today, "Data Piket", context),
+                ],
+                ),
+                Row(
+                  children: [
+                  _menuCard(Icons.book, "Data Piket", context),
+                ],
+                )
                 ]
+                
               )
+              
             ),
           ],
         ),
-     ),
+      ),
     );
   }
 }
