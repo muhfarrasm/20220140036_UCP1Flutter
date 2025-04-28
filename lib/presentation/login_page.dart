@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ucp1/presentation/register_page.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:ucp1/presentation/home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -60,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                     controller: emailController,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.email),
-                      labelText: 'Email',
+                      hintText: 'Email',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -93,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                       suffix: IconButton(icon: Icon(
                         _isPasswordVisible
                           ? Icons.visibility
-                          : Icons.visibility,
+                          : Icons.visibility_off,
                       ),
                       onPressed: (){
                         setState(() {
@@ -102,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       ),
 
-                      labelText: 'Password',
+                      hintText: 'Password',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
