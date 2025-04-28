@@ -170,6 +170,18 @@ class _RegisterPageState extends State<RegisterPage> {
                           obscureText: !_isPasswordVisible,
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.lock),
+                            suffix: IconButton(
+                              icon: Icon(
+                                _isPasswordVisible
+                                    ? Icons.visibility
+                                    : Icons.visibility,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _isPasswordVisible = !_isPasswordVisible;
+                                });
+                              },
+                            ),
                             hintText: 'Password',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
@@ -201,8 +213,22 @@ class _RegisterPageState extends State<RegisterPage> {
                         const SizedBox(height: 8),
                         TextFormField(
                           controller: konfirpasswordController,
+                          obscureText: !_isPasswordKonfirmVisible,
+
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.lock),
+                            suffix: IconButton(
+                              icon: Icon(
+                                _isPasswordVisible
+                                    ? Icons.visibility
+                                    : Icons.visibility,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _isPasswordVisible = !_isPasswordVisible;
+                                });
+                              },
+                            ),
                             hintText: 'Konfirmasi Password',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
