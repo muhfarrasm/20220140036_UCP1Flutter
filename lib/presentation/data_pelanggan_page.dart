@@ -134,6 +134,43 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
           ),
         ),
       ),
+      const SizedBox(height: 32),
+      SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.redAccent,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 16),
+          ),
+          onPressed: () {
+            if (_formKey.currentState!.validate()) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Data berhasil disimpan")),
+              );
+            }
+          },
+          child: const Text("Simpan"),
+        ),
+      ),
+      const SizedBox(height: 8),
+      SizedBox(
+        width: double.infinity,
+        child: OutlinedButton(
+          onPressed: _resetForm,
+          style: OutlinedButton.styleFrom(
+            foregroundColor: Colors.redAccent,
+            side: const BorderSide(color: Colors.redAccent),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 16),
+          ),
+          child: const Text("Reset"),
+        ),
+      ),
     );
   }
 }
