@@ -91,6 +91,15 @@ void _resetForm() {
 
                   ],
                 ),
+                const SizedBox(height: 16),
+                const Text("Alamat"),
+                const SizedBox(height: 4),
+                TextFormField(
+                  controller: alamatController,
+                  decoration: _inputDecoration("Alamat"),
+                  validator: (value) => value!.isEmpty ? 'Alamat tidak boleh kosong' : null,
+                ),
+
               ],
               
 
