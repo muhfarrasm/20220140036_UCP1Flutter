@@ -57,6 +57,27 @@ void _resetForm() {
                   validator: (value) => value!.isEmpty ? 'Cust tidak boleh kosong' : null,
                 ),
                 const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text("Email"),
+                          const SizedBox(height: 4),
+                          TextFormField(
+                            controller: emailController,
+                            decoration: _inputDecoration("Email"),
+                            validator: (value) => value!.isEmpty ? 'Email tidak boleh kosong' : null,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    
+
+                  ],
+                ),
               ],
               
 
