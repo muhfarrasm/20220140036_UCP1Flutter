@@ -22,12 +22,13 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
   DateTime? selectedDate;
   bool isDateFormatReady = false;
 
- @override
+  @override
   void initState() {
     super.initState();
     _initLocaleData();
   }
-   Future<void> _initLocaleData() async {
+
+  Future<void> _initLocaleData() async {
     await initializeDateFormatting('id_ID', null);
     setState(() {
       isDateFormatReady = true;
@@ -170,6 +171,43 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
                         style: const TextStyle(color: Colors.red),
                       ),
                     ),
+
+                  const SizedBox(height: 16),
+                  const Text("Tugas Piket"),
+                  const SizedBox(height: 8),
+
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: TextFormField(
+                          controller: taskController,
+                          decoration: InputDecoration(
+                            hintText: 'Tugas Piket',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        flex: 1,
+                        child: ElevatedButton(
+                          onPressed: addTask,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.deepOrange,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                          ),
+
+                          child: const Text('Tambah'),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
