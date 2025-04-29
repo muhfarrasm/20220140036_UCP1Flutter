@@ -58,7 +58,7 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
   }
 
   void addTask() {
-    if (taskController.text.isEmpty || selectedDate == null) {
+    if (!key.currentState!.validate() || selectedDate == null) {
       setState(() {
         dateError = selectedDate == null ? "Please select a date" : null;
       });
@@ -189,6 +189,12 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
                               borderRadius: BorderRadius.circular(16),
                             ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return 'Tugas tidak boleh kosong';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                       const SizedBox(width: 8),
