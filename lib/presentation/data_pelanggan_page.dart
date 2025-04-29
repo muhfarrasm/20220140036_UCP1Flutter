@@ -8,7 +8,6 @@ class DataPelangganPage extends StatefulWidget {
 }
 
 class _DataPelangganPageState extends State<DataPelangganPage> {
-
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController namaController = TextEditingController();
@@ -18,8 +17,7 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
   final TextEditingController provinsiController = TextEditingController();
   final TextEditingController posController = TextEditingController();
 
-
-void _resetForm() {
+  void _resetForm() {
     _formKey.currentState!.reset();
     namaController.clear();
     emailController.clear();
@@ -28,6 +26,7 @@ void _resetForm() {
     provinsiController.clear();
     posController.clear();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,12 +48,17 @@ void _resetForm() {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("Nama Cust", style: TextStyle(fontWeight: FontWeight.bold)),
+                const Text(
+                  "Nama Cust",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 4),
                 TextFormField(
                   controller: namaController,
                   decoration: _inputDecoration("Nama Cust"),
-                  validator: (value) => value!.isEmpty ? 'Cust tidak boleh kosong' : null,
+                  validator:
+                      (value) =>
+                          value!.isEmpty ? 'Cust tidak boleh kosong' : null,
                 ),
                 const SizedBox(height: 16),
                 Row(
@@ -68,7 +72,11 @@ void _resetForm() {
                           TextFormField(
                             controller: emailController,
                             decoration: _inputDecoration("Email"),
-                            validator: (value) => value!.isEmpty ? 'Email tidak boleh kosong' : null,
+                            validator:
+                                (value) =>
+                                    value!.isEmpty
+                                        ? 'Email tidak boleh kosong'
+                                        : null,
                           ),
                         ],
                       ),
@@ -83,12 +91,15 @@ void _resetForm() {
                           TextFormField(
                             controller: hpController,
                             decoration: _inputDecoration("No Hp"),
-                            validator: (value) => value!.isEmpty ? 'No Hp tidak boleh kosong' : null,
+                            validator:
+                                (value) =>
+                                    value!.isEmpty
+                                        ? 'No Hp tidak boleh kosong'
+                                        : null,
                           ),
                         ],
                       ),
                     ),
-
                   ],
                 ),
                 const SizedBox(height: 16),
@@ -97,16 +108,32 @@ void _resetForm() {
                 TextFormField(
                   controller: alamatController,
                   decoration: _inputDecoration("Alamat"),
-                  validator: (value) => value!.isEmpty ? 'Alamat tidak boleh kosong' : null,
+                  validator:
+                      (value) =>
+                          value!.isEmpty ? 'Alamat tidak boleh kosong' : null,
                 ),
-
               ],
-              
-
             ),
-        )
-         ),
-
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text("Kode Pos"),
+                const SizedBox(height: 4),
+                TextFormField(
+                  controller: posController,
+                  decoration: _inputDecoration("Kode Pos"),
+                  validator:
+                      (value) =>
+                          value!.isEmpty ? 'Pos tidak boleh kosong' : null,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
