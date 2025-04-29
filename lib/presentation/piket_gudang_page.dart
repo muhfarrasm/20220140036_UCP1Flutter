@@ -42,6 +42,32 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
   }
   
 
+void addTask() {
+    if (taskController.text.isEmpty || selectedDate == null) {
+      setState(() {
+        dateError = selectedDate == null ? "Please select a date" : null;
+      });
+      return;
+    }
+    setState(() {
+      daftarTask.add(taskController.text);
+      tanggalList.add(selectedDate!);
+      selectedDate = null;
+      taskController.clear();
+      dateError = null;
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text(
+          'Task successfully added!',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.green,
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
