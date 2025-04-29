@@ -28,8 +28,20 @@ class DataDetailPelanggan extends StatelessWidget {
         foregroundColor: Colors.white,
         title: Text('Detail $nama'),
       ),
+      body: Padding(padding: const EdgeInsets.all(20),
+      child: Column(
+        children: [
+          const CircleAvatar(
+            radius: 60,
+            backgroundImage: AssetImage(
+              'assets/images/cowo.png'
+            ),
+          ),
+        ],
+      ),
+      )
 
-      
+
     );
   }
 }
