@@ -74,7 +74,20 @@ void _resetForm() {
                       ),
                     ),
                     const SizedBox(width: 16),
-                    
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text("No Hp"),
+                          const SizedBox(height: 4),
+                          TextFormField(
+                            controller: hpController,
+                            decoration: _inputDecoration("No Hp"),
+                            validator: (value) => value!.isEmpty ? 'No Hp tidak boleh kosong' : null,
+                          ),
+                        ],
+                      ),
+                    ),
 
                   ],
                 ),
