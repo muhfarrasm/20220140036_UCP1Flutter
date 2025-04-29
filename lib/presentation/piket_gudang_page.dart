@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ucp1/presentation/home_page.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class PiketGudangPage extends StatefulWidget {
   const PiketGudangPage({super.key});
@@ -19,6 +20,19 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
   List<DateTime> tanggalList = [];
   String? dateError;
   DateTime? selectedDate;
+  bool isDateFormatReady = false;
+
+ @override
+  void initState() {
+    super.initState();
+    _initLocaleData();
+  }
+   Future<void> _initLocaleData() async {
+    await initializeDateFormatting('id_ID', null);
+    setState(() {
+      isDateFormatReady = true;
+    });
+  }
 
   Future<void> _selectDate() async {
     final DateTime? pickedDate = await showDatePicker(
@@ -102,12 +116,9 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("Nama Anggota",
-                  style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                  ),
-                  
+                  const Text(
+                    "Nama Anggota",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                   ),
                   const SizedBox(height: 8),
                   TextFormField(
@@ -126,6 +137,39 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
                       return null;
                     },
                   ),
+
+                  const SizedBox(height: 16),
+                  const Text("Pilih Tanggal"),
+                  const SizedBox(height: 8),
+                  InkWell(
+                    onTap: _selectDate,
+                    child: InputDecorator(
+                      decoration: InputDecoration(
+                        hintText: 'Pilih Tanggal',
+                        prefixIcon: const Icon(Icons.calendar_today),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      child: Text(
+                        selectedDate != null
+                            ? formatTanggalDenganHari(selectedDate!)
+                            : 'Pilih Tanggal',
+                        style: TextStyle(
+                          color:
+                              selectedDate == null ? Colors.grey : Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (dateError != null)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: Text(
+                        dateError!,
+                        style: const TextStyle(color: Colors.red),
+                      ),
+                    ),
                 ],
               ),
             ),
