@@ -37,6 +37,13 @@ class _BarangMasukPageState extends State<BarangMasukPage> {
         _tanggalController.text = DateFormat('yyyy-MM-dd').format(pickedDate);
       });
     }
+
+    void _updateHarga() {
+    int jumlah = int.tryParse(_jumlahController.text) ?? 0;
+    int hargaPerUnit = 50000;
+    int total = jumlah * hargaPerUnit;
+    _hargaController.text = total.toString();
+  }
   }
 
   @override
