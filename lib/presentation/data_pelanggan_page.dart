@@ -47,7 +47,19 @@ void _resetForm() {
           key: _formKey,
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text("Nama Cust", style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 4),
+                TextFormField(
+                  controller: namaController,
+                  decoration: _inputDecoration("Nama Cust"),
+                  validator: (value) => value!.isEmpty ? 'Cust tidak boleh kosong' : null,
+                ),
+                const SizedBox(height: 16),
+              ],
               
+
             ),
         )
          ),
