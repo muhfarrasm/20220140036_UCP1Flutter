@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ucp1/presentation/home_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:ucp1/presentation/detail_piket_page.dart';
 
 class PiketGudangPage extends StatefulWidget {
   const PiketGudangPage({super.key});
@@ -242,6 +243,19 @@ class _PiketGudangPageState extends State<PiketGudangPage> {
                                 Icons.arrow_forward_ios,
                                 color: Colors.white,
                               ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder:
+                                        (context) => DetailPiketPage(
+                                          tugas: daftarTask[index],
+                                          nama: daftarNama[index],
+                                          tanggal: tanggalList[index],
+                                        ),
+                                  ),
+                                );
+                              },
                               // subtitle: Text(
                               //   '${daftarNama[index]} - ${formatTanggalDenganHari(tanggalList[index])}',
                               // ),
