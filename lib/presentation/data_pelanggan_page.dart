@@ -27,6 +27,14 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
     posController.clear();
   }
 
+  InputDecoration _inputDecoration(String label) {
+    return InputDecoration(
+      labelText: label,
+      border: OutlineInputBorder(),
+      isDense: true,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,9 +64,7 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
                 TextFormField(
                   controller: namaController,
                   decoration: _inputDecoration("Nama Cust"),
-                  validator:
-                      (value) =>
-                          value!.isEmpty ? 'Cust tidak boleh kosong' : null,
+                  validator: (value) => value!.isEmpty ? 'Cust tidak boleh kosong' : null,
                 ),
                 const SizedBox(height: 16),
                 Row(
@@ -72,11 +78,7 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
                           TextFormField(
                             controller: emailController,
                             decoration: _inputDecoration("Email"),
-                            validator:
-                                (value) =>
-                                    value!.isEmpty
-                                        ? 'Email tidak boleh kosong'
-                                        : null,
+                            validator: (value) => value!.isEmpty ? 'Email tidak boleh kosong' : null,
                           ),
                         ],
                       ),
@@ -91,11 +93,7 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
                           TextFormField(
                             controller: hpController,
                             decoration: _inputDecoration("No Hp"),
-                            validator:
-                                (value) =>
-                                    value!.isEmpty
-                                        ? 'No Hp tidak boleh kosong'
-                                        : null,
+                            validator: (value) => value!.isEmpty ? 'No Hp tidak boleh kosong' : null,
                           ),
                         ],
                       ),
@@ -108,67 +106,82 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
                 TextFormField(
                   controller: alamatController,
                   decoration: _inputDecoration("Alamat"),
-                  validator:
-                      (value) =>
-                          value!.isEmpty ? 'Alamat tidak boleh kosong' : null,
+                  validator: (value) => value!.isEmpty ? 'Alamat tidak boleh kosong' : null,
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text("Provinsi"),
+                          const SizedBox(height: 4),
+                          TextFormField(
+                            controller: provinsiController,
+                            decoration: _inputDecoration("Provinsi"),
+                            validator: (value) => value!.isEmpty ? 'Provinsi tidak boleh kosong' : null,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text("Kode Pos"),
+                          const SizedBox(height: 4),
+                          TextFormField(
+                            controller: posController,
+                            decoration: _inputDecoration("Kode Pos"),
+                            validator: (value) => value!.isEmpty ? 'Kode Pos tidak boleh kosong' : null,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 32),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.redAccent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Data berhasil disimpan")),
+                        );
+                      }
+                    },
+                    child: const Text("Simpan"),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton(
+                    onPressed: _resetForm,
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.redAccent,
+                      side: const BorderSide(color: Colors.redAccent),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
+                    child: const Text("Reset"),
+                  ),
                 ),
               ],
             ),
           ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("Kode Pos"),
-                const SizedBox(height: 4),
-                TextFormField(
-                  controller: posController,
-                  decoration: _inputDecoration("Kode Pos"),
-                  validator:
-                      (value) =>
-                          value!.isEmpty ? 'Pos tidak boleh kosong' : null,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-      const SizedBox(height: 32),
-      SizedBox(
-        width: double.infinity,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.redAccent,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            padding: const EdgeInsets.symmetric(vertical: 16),
-          ),
-          onPressed: () {
-            if (_formKey.currentState!.validate()) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Data berhasil disimpan")),
-              );
-            }
-          },
-          child: const Text("Simpan"),
-        ),
-      ),
-      const SizedBox(height: 8),
-      SizedBox(
-        width: double.infinity,
-        child: OutlinedButton(
-          onPressed: _resetForm,
-          style: OutlinedButton.styleFrom(
-            foregroundColor: Colors.redAccent,
-            side: const BorderSide(color: Colors.redAccent),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            padding: const EdgeInsets.symmetric(vertical: 16),
-          ),
-          child: const Text("Reset"),
         ),
       ),
     );
