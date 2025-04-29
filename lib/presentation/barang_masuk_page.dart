@@ -44,6 +44,18 @@ class _BarangMasukPageState extends State<BarangMasukPage> {
     int total = jumlah * hargaPerUnit;
     _hargaController.text = total.toString();
   }
+
+  void _submitData() {
+    // Simulasi proses submit
+    print("Tanggal: ${_tanggalController.text}");
+    print("Jenis Transaksi: $_selectedJenisTransaksi");
+    print("Jenis Barang: $_selectedJenisBarang");
+    print("Jumlah Barang: ${_jumlahController.text}");
+    print("Harga Satuan: ${_hargaController.text}");
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Data berhasil disubmit")),
+    );
+  }
   }
 
   @override
