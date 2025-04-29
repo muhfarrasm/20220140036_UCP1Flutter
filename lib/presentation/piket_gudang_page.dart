@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:ucp1/presentation/home_page.dart';
 
 class PiketGudangPage extends StatefulWidget {
   const PiketGudangPage({super.key});
@@ -9,40 +10,38 @@ class PiketGudangPage extends StatefulWidget {
 }
 
 class _PiketGudangPageState extends State<PiketGudangPage> {
-
   final TextEditingController taskController = TextEditingController();
   final TextEditingController namaController = TextEditingController();
   final key = GlobalKey<FormState>();
 
-   List<String> daftarTask = [];
-   List<String> daftarNama = [];
-   List<DateTime> tanggalList = [];
-   String? dateError;
+  List<String> daftarTask = [];
+  List<String> daftarNama = [];
+  List<DateTime> tanggalList = [];
+  String? dateError;
   DateTime? selectedDate;
 
-   Future<void> _selectDate() async {
+  Future<void> _selectDate() async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2025),
       lastDate: DateTime(2030),
     );
-    
 
-     if (pickedDate != null) {
+    if (pickedDate != null) {
       setState(() {
         selectedDate = pickedDate;
         dateError = null; // Hapus error jika sudah pilih tanggal
       });
     }
   }
+
   String formatTanggalDenganHari(DateTime date) {
     final formatter = DateFormat('EEEE, dd-MM-yyyy', 'id_ID');
     return formatter.format(date);
   }
-  
 
-void addTask() {
+  void addTask() {
     if (taskController.text.isEmpty || selectedDate == null) {
       setState(() {
         dateError = selectedDate == null ? "Please select a date" : null;
@@ -51,9 +50,11 @@ void addTask() {
     }
     setState(() {
       daftarTask.add(taskController.text);
+      daftarNama.add(namaController.text);
       tanggalList.add(selectedDate!);
       selectedDate = null;
       taskController.clear();
+      namaController.clear();
       dateError = null;
     });
 
@@ -72,7 +73,64 @@ void addTask() {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.deepOrange,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const HomePage()),
+            );
+          },
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+        ),
 
+        title: const Text(
+          'Piket Gudang',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+      ),
+
+      body: Container(
+        color: Colors.white,
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Form(
+              key: key,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Nama Anggota",
+                  style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                  ),
+                  
+                  ),
+                  const SizedBox(height: 8),
+                  TextFormField(
+                    controller: namaController,
+                    decoration: InputDecoration(
+                      hintText: 'Nama Anggota',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Nama tidak boleh kosong';
+                      }
+                      return null;
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
