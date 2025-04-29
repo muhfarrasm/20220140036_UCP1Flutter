@@ -24,6 +24,21 @@ class _BarangMasukPageState extends State<BarangMasukPage> {
   List<String> jenisTransaksiList = ['Masuk', 'Keluar'];
   List<String> jenisBarangList = ['Plastik', 'Kertas', 'Logam'];
 
+  void _pickDate() async {
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    if (pickedDate != null) {
+      setState(() {
+        _tanggalController.text = DateFormat('yyyy-MM-dd').format(pickedDate);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
